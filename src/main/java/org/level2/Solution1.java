@@ -1,24 +1,25 @@
+package org.level2;
 
+//https://school.programmers.co.kr/learn/courses/30/lessons/12951
 
-class Solution {
+public class Solution1 {
     public String solution(String s) {
         String answer = "";
+
         boolean bool = true;
-
         for (int i = 0; i < s.length(); i++) {
-            String temp = "";
-            if (bool) {
-                if (Character.isDigit(s.charAt(i))) {
-                    answer += s.charAt(i);
-                    bool = false;
-                }else {
+
+            if(s.charAt(i)==' '){
+                bool= true;
+                answer += s.charAt(i);
+            }else{
+                if(bool){
                     answer += Character.toUpperCase(s.charAt(i));
+                    bool = false;
+                }else{
+                    answer += Character.toLowerCase(s.charAt(i));
                 }
-            } else {
-                answer += Character.toLowerCase(s.charAt(i));
             }
-
-
         }
         return answer;
     }
