@@ -3,30 +3,23 @@ package org.level1;
 //이상한 문자 만들기
 public class Solution3 {
     public String solution(String s) {
-        String answer = "";
-        char[] arr = new char[s.length()];
+        StringBuilder str = new StringBuilder();
 
-
-        boolean even = true ;
-        for(int i = 0 ; i<s.length() ; i++){
-
-            if(s.charAt(i)==' '){
-                arr[i]=' ';
-                even=true;
-                continue;
+        boolean upper = true;
+        for(char x: s.toCharArray()){
+            if(!Character.isAlphabetic(x)){
+                str.append(x);
+                upper=true;
+            }else {
+                if (upper) {
+                    str.append(Character.toUpperCase(x));
+                } else {
+                    str.append(Character.toLowerCase(x));
+                }
+                upper=!upper;
             }
-
-            if(even){
-                arr[i]=Character.toUpperCase(s.charAt(i));
-            }else if(!even){
-                arr[i]=Character.toLowerCase(s.charAt(i));
-            }
-
-            even=!even;
         }
-
-        System.out.println(arr);
-        return String.valueOf(arr);
+        return str.toString();
     }
 
 }
